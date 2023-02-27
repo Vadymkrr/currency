@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Rates
+{% endblock title %}
+
+{% block content %}
+<table border="1" cellpadding="5" cellspacing="0" style="text-align: center">
+<thead>Full Sources Table
+    <tr>
+        <td>ID</td><td>Url</td><td>Name</td><td>Country</td>
+    </tr>
+</thead>
+    <tbody>
+
+
+<tr>
+    <td>{{ source.id }}</td>
+    <td>{{ source.source_url }}</td>
+    <td>{{ source.name }}</td>
+    <td>{{ source.country }}</td>
+</tr>
+
+    </tbody>
+
+</table>
+
+
+{% endblock content %}
