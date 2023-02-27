@@ -16,11 +16,21 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from currency.views import list_rates, query_list, status_code
+from currency.views import (
+    list_rates, query_list,
+    status_code, list_source,
+    create_source, update_source,
+    delete_source, details_source
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('rate/list/', list_rates),
     path('contact/list/', query_list),
-    path('status1/', status_code)
+    path('status1/', status_code),
+    path('source/list/', list_source),
+    path('source/create/', create_source),
+    path('source/details/<int:pk>/', details_source),
+    path('source/update/<int:pk>/', update_source),
+    path('source/delete/<int:pk>/', delete_source)
 ]

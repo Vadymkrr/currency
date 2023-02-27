@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Rates
+{% endblock title %}
+
+{% block content %}
+<a href="/source/create/">Create</a><br>
+<table border="1" cellpadding="5" cellspacing="0" style="text-align: center">
+<thead>Sources Table
+    <tr>
+        <td>Url</td><td>Name</td><td>Actions</td>
+    </tr>
+</thead>
+    <tbody>
+       {% for source in sources %}
+<tr>
+    <td>{{ source.source_url }}</td>
+    <td>{{ source.name }}</td>
+    <td>
+        <a href="/source/update/{{ source.id }}/">Update</a>
+        <a href="/source/delete/{{ source.id }}/">Delete</a>
+        <a href="/source/details/{{ source.id }}/">Details</a>
+    </td>
+
+</tr>
+       {% endfor %}
+    </tbody>
+
+</table>
+
+
+{% endblock content %}
