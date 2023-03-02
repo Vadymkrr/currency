@@ -3,7 +3,6 @@ from currency.models import Rate, ContactUs, Source
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from currency.forms import SourceForm, RateForm, ContactUsForm
-from django.shortcuts import render
 
 
 class RateListView(ListView):

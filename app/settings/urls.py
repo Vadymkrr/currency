@@ -29,7 +29,6 @@ from currency.views import (
     ContactUsDeleteView,
     ContactUsDetailView,
 
-    #query_list,
     status_code,
 
     SourceListView,
