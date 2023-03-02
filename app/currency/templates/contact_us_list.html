@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Contacts list
+{% endblock title %}
+
+{% block content %}
+<a href="{% url 'contact-create' %}">Create</a><br>
+    Contacts Table
+<table border="1" cellpadding="5" cellspacing="0" style="text-align: center">
+
+    <tr>
+        <td>Subject</td><td>Actions</td>
+    </tr>
+
+    <tbody>
+        {% for contact in object_list %}
+        <tr>
+            <td>{{ contact.subject }}</td>
+
+            <td>
+                <a href="{% url 'contact-update' contact.id %}">Update</a>
+                <a href="{% url 'contact-delete' contact.id %}">Delete</a>
+                <a href="{% url 'contact-details' contact.id %}">Details</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+
+{% endblock content %}
