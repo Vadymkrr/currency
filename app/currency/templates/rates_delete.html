@@ -1,17 +1,13 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Create Source
+    Delete Rates
 {% endblock title %}
 
 {% block content %}
-    Create Source Form
-
+    Do you want to delete rates with id {{ rate.id }} ?
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Submit</button>
+        <button type="submit">Yes</button>
     </form>
-
-
 {% endblock content %}

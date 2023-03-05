@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Details contact
+{% endblock title %}
+
+{% block content %}
+Details contact
+<table border="1" cellpadding="5" cellspacing="0" style="text-align: center">
+
+    <tr>
+        <td>ID</td><td>Email</td><td>Subject</td><td>Message</td>
+    </tr>
+
+    <tbody>
+    <tr>
+        <td>{{ contactus.id }}</td>
+        <td>{{ contactus.email_from }}</td>
+        <td>{{ contactus.subject }}</td>
+        <td>{{ contactus.message }}</td>
+    </tr>
+
+    </tbody>
+
+</table>
+{% endblock content %}

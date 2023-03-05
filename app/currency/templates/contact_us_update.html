@@ -1,15 +1,17 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Create Source
+    Update contacts
 {% endblock title %}
 
 {% block content %}
-    Create Source Form
+    Update Contact Form
 
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Submit</button>
     </form>
+
+
 {% endblock content %}

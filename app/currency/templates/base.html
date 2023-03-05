@@ -6,9 +6,9 @@
 </head>
 <body>
 <p>
-    <a href="/rate/list/">Rates</a>
-    <a href="/contact/list/">Contact</a>
-    <a href="/source/list">Source</a>
+    <a href="{% url 'rate-list' %}">Rates</a>
+    <a href="{% url 'contact-list' %}">Contact</a>
+    <a href="{% url 'source-list' %}">Source</a>
 </p>
 {% block content %}
 {% endblock %}
