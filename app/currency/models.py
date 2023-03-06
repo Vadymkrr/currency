@@ -14,8 +14,7 @@ class Rate(models.Model):
     source = models.CharField(max_length=25)
 
     def __str__(self):
-        return f'Created: {self.created}, Currency: {self.get_currency_display()}, Buy: {self.buy}, Sell: {self.sell},' \
-               f' Source: {self.source}'
+        return f'Currency: {self.get_currency_display()}, Buy: {self.buy}, Sell: {self.sell},Source: {self.source}'
 
 
 class ContactUs(models.Model):
