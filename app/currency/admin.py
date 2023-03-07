@@ -29,8 +29,10 @@ class SourceAdmin(admin.ModelAdmin):
         'name',
         'country',
     )
-    list_filter = (
+    search_fields = (
         'name',
+    )
+    list_filter = (
         'country',
     )
 
@@ -43,8 +45,11 @@ class ContactUsAdmin(admin.ModelAdmin):
         'subject',
         'message',
     )
-    list_filter = (
+    search_fields = (
         'subject',
+    )
+    list_filter = (
+        'email_from',
     )
     readonly_fields = (
         'id',
