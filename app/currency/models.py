@@ -33,3 +33,14 @@ class Source(models.Model):
 
     def __str__(self):
         return f'ID: {self.id}, URL: {self.source_url}, Name: {self.name}, Country: {self.country}'
+
+
+class RequestResponseLog(models.Model):
+    path = models.CharField(max_length=255)
+    request_method = models.CharField(
+        max_length=255,
+    )
+    time = models.FloatField()
+
+    def __str__(self):
+        return f'ID: {self.id}, Path: {self.path}, Request method: {self.request_method}'
