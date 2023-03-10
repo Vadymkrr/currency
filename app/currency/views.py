@@ -1,8 +1,8 @@
 from django.http import HttpResponse
-from currency.models import Rate, ContactUs, Source
+from currency.models import Rate, ContactUs, Source, RequestResponseLog
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
-from currency.forms import SourceForm, RateForm, ContactUsForm
+from currency.forms import SourceForm, RateForm, ContactUsForm, RequestResponseLogForm
 
 
 class RateListView(ListView):
@@ -43,6 +43,30 @@ class ContactUsCreateView(CreateView):
     form_class = ContactUsForm
     template_name = 'contact_us_create.html'
     success_url = reverse_lazy('contact-list')
+
+    def _send_email(self):
+        subject = 'User ContactUs'
+        recipient = 'support@example.com'
+        message = f'''
+            Request from: {self.object.email_from}.
+            Reply too email: {self.object.email_from}.
+            Subject: {self.object.subject}.
+            Body: {self.object.message}
+        '''
+
+        from django.core.mail import send_mail
+        send_mail(
+            subject,
+            message,
+            recipient,
+            [recipient],
+            fail_silently=False
+        )
+
+    def form_valid(self, form):
+        redirect = super().form_valid(form)
+        self._send_email()
+        return redirect
 
 
 class ContactUsUpdateView(UpdateView):
@@ -90,6 +114,23 @@ class SourceDeleteView(DeleteView):
     queryset = Source.objects.all()
     template_name = 'source_delete.html'
     success_url = reverse_lazy('source-list')
+
+
+class RequestResponseLogListView(ListView):
+    template_name = 'req-res-log_list.html'
+    queryset = RequestResponseLog.objects.all()
+
+
+class RequestResponseLogCreateView(CreateView):
+    form_class = RequestResponseLogForm
+    template_name = 'req-res-log_create.html'
+    success_url = reverse_lazy('req-res-list')
+
+
+class RequestResponseLogDeleteView(DeleteView):
+    queryset = RequestResponseLog.objects.all()
+    template_name = 'req-res-log_delete.html'
+    success_url = reverse_lazy('req-res-list')
 
 
 def status_code(request):

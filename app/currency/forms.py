@@ -1,6 +1,11 @@
 from django import forms
 
-from currency.models import Source, Rate, ContactUs
+from currency.models import (
+    Source,
+    Rate,
+    ContactUs,
+    RequestResponseLog,
+)
 
 
 class SourceForm(forms.ModelForm):
@@ -31,4 +36,14 @@ class ContactUsForm(forms.ModelForm):
             'email_from',
             'subject',
             'message',
+        )
+
+
+class RequestResponseLogForm(forms.ModelForm):
+    class Meta:
+        model = RequestResponseLog
+        fields = (
+            'path',
+            'request_method',
+            'time',
         )
