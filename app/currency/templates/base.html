@@ -2,15 +2,14 @@
 <html>
 <head>
 <title>Currency - {% block title %}{% endblock title %}</title>
-    <style>a{text-decoration: none}</style>
+    <style>
+        a{text-decoration: none}
+        a:visited{color: blue;}
+    </style>
 </head>
 <body>
-<p>
-    <a href="{% url 'rate-list' %}">Rates</a>
-    <a href="{% url 'contact-list' %}">Contact</a>
-    <a href="{% url 'source-list' %}">Source</a>
-    <a href="{% url 'req-res-list' %}">RequestResponseLog</a>
-</p>
+
+{% include 'includes/navbar.html' %}
 {% block content %}
 {% endblock %}
 

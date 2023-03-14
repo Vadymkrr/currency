@@ -22,6 +22,10 @@ class ContactUs(models.Model):
     subject = models.CharField(max_length=50)
     message = models.CharField(max_length=255)
 
+    class Meta:
+        verbose_name = 'Contact Us'
+        verbose_name_plural = 'Contact Us'
+
     def __str__(self):
         return f'ID: {self.id}, Email: {self.email_from}, Subject: {self.subject}, Message: {self.message}'
 
@@ -41,6 +45,10 @@ class RequestResponseLog(models.Model):
         max_length=255,
     )
     time = models.FloatField()
+
+    class Meta:
+        verbose_name = 'Request, Response, Log'
+        verbose_name_plural = 'Request, Response, Log'
 
     def __str__(self):
         return f'ID: {self.id}, Path: {self.path}, Request method: {self.request_method}'
