@@ -25,8 +25,10 @@ from currency.views import (
     RequestResponseLogDeleteView,
 )
 
+app_name = 'currency'
 
 urlpatterns = [
+
     path('status1/', status_code),
 
     path('rate/list/', RateListView.as_view(), name='rate-list'),

@@ -5,7 +5,7 @@
 {% endblock title %}
 
 {% block content %}
-<a href="{% url 'contact-create' %}">Create</a><br>
+<a href="{% url 'currency:contact-create' %}">Create</a><br>
     Contacts Table
 <table border="1" cellpadding="5" cellspacing="0" style="text-align: center">
 
@@ -19,9 +19,9 @@
             <td>{{ contact.subject }}</td>
 
             <td>
-                <a href="{% url 'contact-update' contact.id %}">Update</a>
-                <a href="{% url 'contact-delete' contact.id %}">Delete</a>
-                <a href="{% url 'contact-details' contact.id %}">Details</a>
+                <a href="{% url 'currency:contact-update' contact.id %}">Update</a>
+                <a href="{% url 'currency:contact-delete' contact.id %}">Delete</a>
+                <a href="{% url 'currency:contact-details' contact.id %}">Details</a>
             </td>
         </tr>
     {% endfor %}

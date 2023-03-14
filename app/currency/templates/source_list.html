@@ -5,7 +5,7 @@
 {% endblock title %}
 
 {% block content %}
-<a href="{% url 'source-create' %}">Create</a><br>
+<a href="{% url 'currency:source-create' %}">Create</a><br>
     Sources Table
 <table border="1" cellpadding="5" cellspacing="0" style="text-align: center">
 
@@ -20,9 +20,9 @@
         <td>{{ source.name }}</td>
 
         <td>
-            <a href="{% url 'source-update' source.id %}">Update</a>
-            <a href="{% url 'source-delete' source.id %}">Delete</a>
-            <a href="{% url 'source-details' source.id %}">Details</a>
+            <a href="{% url 'currency:source-update' source.id %}">Update</a>
+            <a href="{% url 'currency:source-delete' source.id %}">Delete</a>
+            <a href="{% url 'currency:source-details' source.id %}">Details</a>
         </td>
 
         </tr>
