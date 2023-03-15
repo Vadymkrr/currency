@@ -24,7 +24,7 @@ class UserActivateView(RedirectView):
         user = get_user_model().objects.filter(username=username).only('id').first()
         if user is not None:
             user.is_active = True
-            user.save(updated_firlds=['is_active'])
+            user.save(update_fields=['is_active'])
 
         url = super().get_redirect_url(*args, **kwargs)
         return url
