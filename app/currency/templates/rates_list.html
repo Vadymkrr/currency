@@ -10,11 +10,12 @@
 <table border="1" cellpadding="5" cellspacing="0" style="text-align: center">
 
     <tr>
-        <td>Buy</td><td>Sell</td><td>Currency</td><td>Source</td><td>Actions</td>
+        <td>ID</td><td>Buy</td><td>Sell</td><td>Currency</td><td>Source</td><td>Actions</td>
     </tr>
     <tbody>
     {% for rate in object_list %}
 <tr>
+    <td>{{ rate.id }}</td>
     <td>{{ rate.buy }}</td>
     <td>{{ rate.sell }}</td>
     <td>{{ rate.get_currency_display }}</td>
