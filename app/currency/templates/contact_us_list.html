@@ -1,32 +1,41 @@
 {% extends 'base.html' %}
-
 {% block title %}
     Contacts list
 {% endblock title %}
 
 {% block content %}
 <a href="{% url 'currency:contact-create' %}">Create</a><br>
-    Contacts Table
-<table border="1" cellpadding="5" cellspacing="0" style="text-align: center">
+<h3>Contacts Table</h3>
+<div class="row col-12">
+<table class="table table-striped">
 
     <tr>
-        <td>Subject</td><td>Actions</td>
+        <th scope="col">#</th><th scope="col">Subject</th><th scope="col">Actions</th>
     </tr>
 
     <tbody>
         {% for contact in object_list %}
         <tr>
+            <td scope="col">{{ forloop.counter }}</td>
             <td>{{ contact.subject }}</td>
 
             <td>
-                <a href="{% url 'currency:contact-update' contact.id %}">Update</a>
-                <a href="{% url 'currency:contact-delete' contact.id %}">Delete</a>
-                <a href="{% url 'currency:contact-details' contact.id %}">Details</a>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown"
+                            aria-expanded="false">
+                        Actions
+                    </button>
+                    <div class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'currency:contact-update' contact.id %}">Update</a></li>
+                        <li><a class="dropdown-item" href="{% url 'currency:contact-delete' contact.id %}">Delete</a></li>
+                        <li><a class="dropdown-item" href="{% url 'currency:contact-details' contact.id %}">Details</a></li>
+                    </div>
+                </div>
             </td>
         </tr>
     {% endfor %}
     </tbody>
 
 </table>
-
+</div>
 {% endblock content %}

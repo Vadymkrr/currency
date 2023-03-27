@@ -6,31 +6,39 @@
 
 {% block content %}
 <a href="{% url 'currency:source-create' %}">Create</a><br>
-    Sources Table
-<table border="1" cellpadding="5" cellspacing="0" style="text-align: center">
+    <h3>Sources Table</h3>
+<div class="row col-12">
+<table class="table table-striped">
 
     <tr>
-        <td>Url</td><td>Name</td><td>Actions</td>
+        <th scope="col">#</th><th scope="col">ID</th><th scope="col">Url</th><th scope="col">Name</th><th scope="col">Actions</th>
     </tr>
 
     <tbody>
        {% for source in object_list %}
-        <tr>
-        <td>{{ source.id }}</td>
-        <td>{{ source.source_url }}</td>
-        <td>{{ source.name }}</td>
+<tr>
+    <td scope="col">{{ forloop.counter }}</td>
+    <td>{{ source.id }}</td>
+    <td>{{ source.source_url }}</td>
+    <td>{{ source.name }}</td>
 
         <td>
-            <a href="{% url 'currency:source-update' source.id %}">Update</a>
-            <a href="{% url 'currency:source-delete' source.id %}">Delete</a>
-            <a href="{% url 'currency:source-details' source.id %}">Details</a>
-        </td>
-
-        </tr>
-       {% endfor %}
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown"
+                     aria-expanded="false">
+                    Actions
+                </button>
+            <div class="dropdown-menu">
+                <li><a href="{% url 'currency:source-update' source.id %}">Update</a></li>
+                <li><a href="{% url 'currency:source-delete' source.id %}">Delete</a></li>
+                <li><a href="{% url 'currency:source-details' source.id %}">Details</a></li>
+            </div>
+        </div>
+    </td>
+</tr>
+   {% endfor %}
     </tbody>
 
 </table>
-
-
+</div>
 {% endblock content %}

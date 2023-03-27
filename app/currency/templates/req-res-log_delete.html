@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block title %}
     Delete Request Response Log
@@ -8,6 +9,7 @@
       Do you want to delete data with id {{ requestresponselog.id }} ?
     <form method="post">
         {% csrf_token %}
+        {{ form|crispy }}
         <button type="submit">Yes</button>
     </form>
 {% endblock content %}

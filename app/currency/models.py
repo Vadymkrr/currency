@@ -1,4 +1,5 @@
 from django.db import models
+from django.templatetags.static import static
 
 from currency.choices import RateCurrencyChoices
 
@@ -30,13 +31,30 @@ class ContactUs(models.Model):
         return f'ID: {self.id}, Email: {self.email_from}, Subject: {self.subject}, Message: {self.message}'
 
 
+def avatar_path(instance, filename):
+    return f'avatars/{instance.id}/{filename}'
+
+
 class Source(models.Model):
     source_url = models.CharField(max_length=255)
     name = models.CharField(max_length=64)
     country = models.CharField(max_length=255)
+    avatar = models.FileField(
+        default=None,
+        null=True,
+        blank=True,
+        upload_to=avatar_path
+    )
+
+    @property
+    def avatar_url(self):
+        if self.avatar:
+            return self.avatar.url
+
+        return static('privat.jpg')
 
     def __str__(self):
-        return f'{self.name}'
+        return f'name: {self.name}'
 
 
 class RequestResponseLog(models.Model):

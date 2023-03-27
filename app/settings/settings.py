@@ -45,6 +45,8 @@ EXTERNAL_APPS = [
     'debug_toolbar',
     'rangefilter',
     'import_export',
+    'crispy_forms',
+    'crispy_bootstrap4',
 ]
 
 INTERNAL_APPS = [
@@ -131,6 +133,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap4'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR.parent / 'static_content' / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -149,8 +158,19 @@ AUTH_USER_MODEL = 'account.User'
 
 if DEBUG:
     import socket  # only if you haven't already imported this
-    hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
-    INTERNAL_IPS = [ip[: ip.rfind(".")] + ".1" for ip in ips] + ["127.0.0.1", "10.0.2.2"]
+
+    # hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
+    # INTERNAL_IPS = [ip[: ip.rfind(".")] + ".1" for ip in ips] + ["127.0.0.1", "10.0.2.2"]
+
+    try:
+        # Получаем имя хоста
+        hostname = socket.gethostname()
+
+        # Получаем список IP-адресов для данного имени хоста
+        ips = socket.getaddrinfo(hostname, None, socket.AF_INET, socket.SOCK_DGRAM, socket.SOL_TCP)
+        INTERNAL_IPS = [ip[4][0][:ip[4][0].rfind(".")] + ".1" for ip in ips] + ["127.0.0.1", "10.0.2.2"]
+    except socket.gaierror:
+        INTERNAL_IPS = []
 
 HOST = 'localhost:8000'
 HTTP_SCHEMA = 'http'

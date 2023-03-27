@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
-
 {% block title %}
     Request Response Log list
 {% endblock title %}
 
 {% block content %}
-    Request Response Log Table
-<table border="1" cellpadding="5" cellspacing="0" style="text-align: center">
+<h3>Request Response Log Table</h3>
+<div class="row col-12">
+<table class="table table-striped">
 
     <tr>
-        <td>ID</td><td>Path</td><td>Request method</td><td>Time</td><td>Actions</td>
+        <th>ID</th><th>Path</th><th>Request method</th><th>Time</th><th>Actions</th>
     </tr>
     <tbody>
     {% for rrl in object_list %}
@@ -26,6 +26,6 @@
     {% endfor %}
     </tbody>
 
-</table>
+</>
 
 {% endblock content %}
