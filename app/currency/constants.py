@@ -1,0 +1,2 @@
+PRIVATBANK_CODE_NAME = 'Privat Bank'
+MONOBANK_CODE_NAME = 'Monobank'

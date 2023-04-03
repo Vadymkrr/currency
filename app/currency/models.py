@@ -11,11 +11,14 @@ class Rate(models.Model):
         default=RateCurrencyChoices.USD
     )
     buy = models.DecimalField(max_digits=6, decimal_places=2)
-    sell = models.DecimalField(max_digits=6, decimal_places=2)
+    sale = models.DecimalField(max_digits=6, decimal_places=2)
     source = models.ForeignKey('currency.Source', on_delete=models.CASCADE, related_name='rates')
 
+    class Meta:
+        ordering = ('-created',)
+
     def __str__(self):
-        return f'Currency: {self.get_currency_display()}, Buy: {self.buy}, Sell: {self.sell},Source: {self.source}'
+        return f'Currency: {self.get_currency_display()}, Buy: {self.buy}, Sale: {self.sale},Source: {self.source}'
 
 
 class ContactUs(models.Model):
@@ -36,15 +39,16 @@ def avatar_path(instance, filename):
 
 
 class Source(models.Model):
-    source_url = models.CharField(max_length=255)
+    source_url = models.CharField(max_length=64)
     name = models.CharField(max_length=64)
-    country = models.CharField(max_length=255)
+    country = models.CharField(max_length=64)
     avatar = models.FileField(
         default=None,
         null=True,
         blank=True,
         upload_to=avatar_path
     )
+    code_name = models.CharField(max_length=64, unique=True)
 
     @property
     def avatar_url(self):
@@ -54,7 +58,7 @@ class Source(models.Model):
         return static('privat.jpg')
 
     def __str__(self):
-        return f'name: {self.name}'
+        return f'{self.name}'
 
 
 class RequestResponseLog(models.Model):

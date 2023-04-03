@@ -1,4 +1,3 @@
-from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.http import HttpResponse
@@ -59,21 +58,21 @@ class ContactUsCreateView(CreateView):
 
     def _send_email(self):
         subject = 'User ContactUs'
-        recipient = settings.DEFAULT_FROM_EMAIL
+        # recipient = settings.DEFAULT_FROM_EMAIL
         message = f'''
             Request from: {self.object.email_from}.
             Reply too email: {self.object.email_from}.
             Subject: {self.object.subject}.
             Body: {self.object.message}
         '''
-
-        from django.core.mail import send_mail
-        send_mail(
-            subject,
-            message,
-            recipient,
-            [recipient],
-            fail_silently=False
+        from currency.tasks import send_mail
+        # send_mail.delay(subject, message)
+        # send_mail.apply_async(args=[subject, message])
+        from datetime import datetime
+        send_mail.apply_async(
+            kwargs={'subject': subject, 'message': message},
+            # countdown=20
+            eta=datetime(2023, 4, 1, 17, 7, 0)
         )
 
     def form_valid(self, form):
