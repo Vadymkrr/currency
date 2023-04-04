@@ -1,6 +1,6 @@
-from django import forms
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Submit
+from crispy_forms.layout import Layout, Submit, HTML
+from django import forms
 
 from currency.models import (
     Source,
@@ -22,12 +22,25 @@ class SourceForm(forms.ModelForm):
 
 
 class RateForm(forms.ModelForm):
+    helper = FormHelper()
+    helper.form_class = 'form-horizontal'
+    helper.label_class = 'col-lg-2'
+    helper.field_class = 'col-lg-8'
+    helper.layout = Layout(
+        'currency',
+        'buy',
+        'sale',
+        'source',
+        Submit('submit', 'Save changes'),
+        HTML('<a class="btn btn-default" href="{% url "currency:rate-list" %}">Cancel</a>')
+    )
+
     class Meta:
         model = Rate
         fields = (
             'currency',
             'buy',
-            'sell',
+            'sale',
             'source',
         )
 

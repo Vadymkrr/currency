@@ -10,7 +10,7 @@ class RateAdmin(ImportExportModelAdmin):
         'id',
         'currency',
         'buy',
-        'sell',
+        'sale',
         'source',
         'created',
     )
