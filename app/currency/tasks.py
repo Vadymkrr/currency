@@ -28,25 +28,22 @@ def parse_monobank():
     rates = response.json()
 
     available_currency = {
-        '840': RateCurrencyChoices.USD,
-        '978': RateCurrencyChoices.EUR,
-        '980': RateCurrencyChoices.UAH,
+        840: RateCurrencyChoices.USD,
+        978: RateCurrencyChoices.EUR,
+        980: RateCurrencyChoices.UAH,
     }
 
     for rate in rates:
-        code_a = str(rate['currencyCodeA'])
-        code_b = str(rate['currencyCodeB'])
-
-        if code_a not in available_currency:
+        if rate['currencyCodeA'] not in available_currency:
             continue
-        if code_a != '980' and code_b != '980':
+        if rate['currencyCodeA'] != 980 and rate['currencyCodeB'] != 980:
             continue
 
         buy = to_2_places_decimal(rate['rateBuy'])
         sale = to_2_places_decimal(rate['rateSell'])
 
         last_rate = Rate.objects.filter(
-            currency=available_currency[code_a],
+            currency=available_currency[rate['currencyCodeA']],
             source=source
         ) \
             .order_by('-created') \
@@ -56,7 +53,7 @@ def parse_monobank():
             Rate.objects.create(
                 buy=buy,
                 sale=sale,
-                currency=available_currency[code_a],
+                currency=available_currency[rate['currencyCodeA']],
                 source=source
             )
 
