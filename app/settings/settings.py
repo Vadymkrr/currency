@@ -48,6 +48,7 @@ EXTERNAL_APPS = [
     'import_export',
     'crispy_forms',
     'crispy_bootstrap4',
+    'django_filters',
 ]
 
 INTERNAL_APPS = [
@@ -180,8 +181,13 @@ HTTP_SCHEMA = 'http'
 CELERY_BROKER_URL = 'amqp://localhost'
 
 CELERY_BEAT_SCHEDULE = {
-    'debug': {
-        'task': 'currency.tasks.slow',
+    'monobank': {
+        'task': 'currency.tasks.parse_monobank',
         'schedule': crontab(minute='*/15')
+    },
+
+    'privat': {
+            'task': 'currency.tasks.parse_privatbank',
+            'schedule': crontab(minute='*/15')
     }
 }

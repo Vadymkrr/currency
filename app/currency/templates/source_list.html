@@ -6,6 +6,10 @@
 
 {% block content %}
 <a href="{% url 'currency:source-create' %}">Create</a><br>
+     <form method="get">
+        {{ filter.form.as_p }}
+        <input type="submit" />
+    </form><br>
     <h3>Sources Table</h3>
 <div class="row col-12">
 <table class="table table-striped">
@@ -41,4 +45,5 @@
 
 </table>
 </div>
+    {% include 'includes/pagination.html' %}
 {% endblock content %}
