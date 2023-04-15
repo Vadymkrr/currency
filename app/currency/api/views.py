@@ -31,10 +31,11 @@ class ContactUsViewSet(viewsets.ModelViewSet):
 
     filter_backends = (
         filters.DjangoFilterBackend,
-        # rest_framework_filters.OrderingFilter,
+        rest_framework_filters.OrderingFilter,
     )
-    # filterset_class = ContactUsFilter
-    # ordering_fields = ('id', 'email_from', 'message')
+
+    filterset_class = ContactUsFilter
+    ordering_fields = ('id', 'email_from', 'message')
 
 # class ContactUsApiView(generics.ListAPIView):
 #     queryset = ContactUs.objects.all()

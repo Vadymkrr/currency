@@ -1,7 +1,6 @@
-from django.urls import path, include
+# from django.urls import path, include
 
-from currency.api.views import SourceApiView, ContactUsViewSet  # ContactUsCreateApiView, ContactUsApiView
-from rest_framework import routers
+from currency.api.views import ContactUsViewSet  # ContactUsCreateApiView, ContactUsApiView
 from rest_framework.routers import DefaultRouter
 
 app_name = 'api-currency'
