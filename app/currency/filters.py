@@ -13,11 +13,15 @@ class ContactUsFilter(django_filters.FilterSet):
 
     class Meta:
         model = ContactUs
-        fields = ['subject']
+        fields = {
+            'subject': ('startswith', 'endswith', 'exact')
+        }
 
 
 class SourceFilter(django_filters.FilterSet):
 
     class Meta:
         model = Source
-        fields = ['name', 'country']
+        fields = {
+            'name': ('gt', 'gte', 'lt', 'lte', 'exact')
+        }
