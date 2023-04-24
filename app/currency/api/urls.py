@@ -1,12 +1,13 @@
 # from django.urls import path, include
 
-from currency.api.views import ContactUsViewSet  # ContactUsCreateApiView, ContactUsApiView
+from currency.api.views import ContactUsViewSet, SourceApiView  # ContactUsCreateApiView, ContactUsApiView
 from rest_framework.routers import DefaultRouter
 
 app_name = 'api-currency'
 
 router = DefaultRouter()
 router.register(r'contactus', ContactUsViewSet, basename='contactus')
+router.register(r'source', SourceApiView, basename='source')
 
 urlpatterns = [
     # path('sources/', SourceApiView.as_view(), name='sources'),

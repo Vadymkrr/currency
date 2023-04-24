@@ -9,9 +9,10 @@ from django_filters import rest_framework as filters
 from rest_framework import filters as rest_framework_filters
 
 from currency.filters import SourceFilter, ContactUsFilter
+from rest_framework.renderers import JSONRenderer
 
 
-class SourceApiView(generics.ListAPIView):
+class SourceApiView(viewsets.ModelViewSet):
     queryset = Source.objects.all()
     serializer_class = SourceSerializer
     pagination_class = SourcesPagination
