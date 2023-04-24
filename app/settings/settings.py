@@ -190,8 +190,8 @@ CELERY_BEAT_SCHEDULE = {
     },
 
     'privat': {
-            'task': 'currency.tasks.parse_privatbank',
-            'schedule': crontab(minute='*/15')
+        'task': 'currency.tasks.parse_privatbank',
+        'schedule': crontab(minute='*/15')
     }
 }
 

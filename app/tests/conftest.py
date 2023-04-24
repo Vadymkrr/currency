@@ -16,12 +16,12 @@ def api_client():
     yield client
 
 
-# @pytest.fixture(autouse=True, scope='function')
-# def load_fixtures(django_db_setup, django_db_blocker):
-#     with django_db_blocker.unblock():
-#         fixtures = {
-#             'source.json',
-#             'rate.json',
-#         }
-#         for fixture in fixtures:
-#             call_command('loaddata', f'app/tests/fixtures/{fixture}')
+@pytest.fixture(autouse=True, scope='function')
+def load_fixtures(django_db_setup, django_db_blocker):
+    with django_db_blocker.unblock():
+        fixtures = {
+            'source.json',
+            'rate.json',
+        }
+        for fixture in fixtures:
+            call_command('loaddata', f'app/tests/fixtures/{fixture}')

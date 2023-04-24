@@ -21,7 +21,7 @@ def test_monobank_parser(mocker):
          "rateCross": 0,
          "rateSell": 41.5007}
     ]
-    request_get_mock = mocker.patch(
+    mocker.patch(
         'requests.get',
         return_value=MagicMock(
             json=lambda: monobank_data
