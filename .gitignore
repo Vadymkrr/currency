@@ -6,3 +6,4 @@ celerybeat-schedule.db
 app/celerybeat-schedule.db
 .coverage
 .pytest_cache
+.env
