@@ -1,0 +1,24 @@
+[
+  {
+    "model": "currency.rate",
+    "pk": 119,
+    "fields": {
+      "created": "2023-04-07T11:27:24.308Z",
+      "currency": 2,
+      "buy": "39.91",
+      "sale": "41.49",
+      "source": 6
+    }
+  },
+  {
+    "model": "currency.rate",
+    "pk": 120,
+    "fields": {
+      "created": "2023-04-07T11:27:24.313Z",
+      "currency": 1,
+      "buy": "36.57",
+      "sale": "37.45",
+      "source": 7
+    }
+  }
+]

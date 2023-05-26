@@ -14,7 +14,7 @@ class ContactUsFilter(django_filters.FilterSet):
     class Meta:
         model = ContactUs
         fields = {
-            'subject': ('startswith', 'endswith', 'exact')
+            'subject': ('startswith', 'endswith', 'contains'),
         }
 
 
@@ -23,5 +23,5 @@ class SourceFilter(django_filters.FilterSet):
     class Meta:
         model = Source
         fields = {
-            'name': ('gt', 'gte', 'lt', 'lte', 'exact')
+            'name': ('lt', 'lte', 'exact')
         }

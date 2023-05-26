@@ -1,4 +1,4 @@
-from rest_framework import generics, viewsets
+from rest_framework import viewsets
 
 from currency.models import Source, ContactUs
 
@@ -11,7 +11,7 @@ from rest_framework import filters as rest_framework_filters
 from currency.filters import SourceFilter, ContactUsFilter
 
 
-class SourceApiView(generics.ListAPIView):
+class SourceApiView(viewsets.ModelViewSet):
     queryset = Source.objects.all()
     serializer_class = SourceSerializer
     pagination_class = SourcesPagination

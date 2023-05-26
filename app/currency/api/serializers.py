@@ -10,7 +10,9 @@ class SourceSerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'name',
-            'country'
+            'country',
+            'source_url',
+            'code_name'
         )
 
 

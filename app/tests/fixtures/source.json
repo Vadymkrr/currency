@@ -1,0 +1,35 @@
+[
+  {
+    "model": "currency.source",
+    "pk": 6,
+    "fields": {
+      "source_url": "https://privatbank.ua",
+      "name": "PB",
+      "country": "",
+      "avatar": "",
+      "code_name": "Privat Bank"
+    }
+  },
+  {
+    "model": "currency.source",
+    "pk": 7,
+    "fields": {
+      "source_url": "mono.ua",
+      "name": "mono",
+      "country": "ua",
+      "avatar": "",
+      "code_name": ""
+    }
+  },
+  {
+    "model": "currency.source",
+    "pk": 8,
+    "fields": {
+      "source_url": "",
+      "name": "AlfaBank",
+      "country": "",
+      "avatar": "",
+      "code_name": "Alfa"
+    }
+  }
+]
